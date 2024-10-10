@@ -11,5 +11,8 @@ modprobe ext4
 mkdir -p ${CHROOT_PATH}
 mount -t ext4 ${EXT4_OPT} ${NVME_DRIVE} ${CHROOT_PATH}
 
+mkdir -p ${CHROOT_PATH}/mnt/sdcard
+mount -t bind / ${CHROOT_PATH}/mnt/sdcard
+
 cd ${CHROOT_PATH}
 /bin/systemctl --no-block switch-root ${CHROOT_PATH}
